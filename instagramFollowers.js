@@ -45,7 +45,7 @@ function sleep(ms) {
   );
   let limit = 0;
   let followed = 1;
-  for (let i = 0; i < totalListLength.length - 1; i++) {
+  for (let i = 0; i < totalListLength.length; i++) {
     const d = totalListLength[i];
     const followBtn = d.querySelector("button");
     if (followBtn.textContent == "Follow") {
@@ -73,4 +73,9 @@ function sleep(ms) {
       }
     }
   }
-})();
+})().then(() => {
+        console.log(
+          "%cDone Following!",
+          "color:green;font-style:bold;font-size:22px;"
+        );
+});

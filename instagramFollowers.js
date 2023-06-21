@@ -15,12 +15,15 @@ function sleep(ms) {
 }
 
 (async function () {
-  const totalFollowing = Number(
+  let totalFollowing = Number(
     document
       .querySelector("section > ul > li:nth-child(3)")
       .textContent.replace(/following/, "")
       .trim()
   );
+
+  if(totalFollowing > 200) totalFollowing = 200
+
   let sP = 385;
 
   console.log("%cPlease Wait!", "color:green;font-style:bold;font-size:22px;");
@@ -44,8 +47,7 @@ function sleep(ms) {
     '[role="dialog"] > div > div > div > div > ._aano > div > div > div'
   );
   let limit = 0;
-  let followed = 1;
-  for (let i = 0; i < totalListLength.length; i++) {
+  for (let i = 0; i < 200; i++) {
     const d = totalListLength[i];
     const followBtn = d.querySelector("button");
     if (followBtn.textContent == "Follow") {
@@ -58,7 +60,6 @@ function sleep(ms) {
         "color:cyan;font-style:bold;font-size:18px;"
       );
       limit++;
-      followed++;
       if (limit == 5) {
         console.log(
           "%cSleeping For 5min!",
@@ -67,7 +68,7 @@ function sleep(ms) {
         limit = 0;
         await sleep(300000);
       }
-      if (followed == 200) {
+      if (i == 200) {
         console.log("Reach Limit For a Day!");
         return;
       }

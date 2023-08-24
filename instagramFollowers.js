@@ -26,12 +26,12 @@ async function Follow() {
   );
   for (let i = 0; i < totalListLength.length; i++) {
     const d = totalListLength[i];
-    const followBtn = d.querySelector("button");
-    if (followBtn.textContent == "Follow") {
+    const followBtn = d.querySelector("button") || false;
+    if (followBtn && followBtn.textContent == "Follow") {
       followBtn.click();
       console.log(
         `%c${followed}. Followed ${d
-          .querySelector("span > span")
+          .querySelector('span')
           .textContent.replace(/Verified/g, "")
           .trim()}`,
         "color:cyan;font-style:bold;font-size:18px;"
